@@ -5,6 +5,11 @@ var Q = Quintus();
 
 <html>
 <head>
+<!-- Pull the engine from the Quintus CDN or load it locally -->
+    <!-- (use quintus-all.min.js for production) -->
+    <script src='http://cdn.html5quintus.com/v0.1.5/quintus-all.js'></script>
+    
+    
     <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1"/>
     <meta charset="utf-8">
     <title>The Quaker Game</title>
@@ -46,22 +51,19 @@ var Q = Quintus();
 
     </head>
 <body lang="en">
-    
-<script type="text/javascript">
-    var backUrl = "http://www.wix.com/create/website";
-    var editUrl = "http://editor.wix.com/html/editor/web/renderer/new?metaSiteId=1292ebac-7dfd-5731-327f-7ac9bd8bac1d&siteId=5c1beed4-ac61-4783-a2ea-182dece51d13";
-    var galleryDocIndex = "$pageModel.galleryDocIndex";
-    var originAppUrl = "$pageModel.originAppUrl";
-    var W = W || {};
-    W.App = W.App || {};
-    W.App.CLIENT_CONFIG = {"biServerUrl":"http://frog.wix.com/spettatore_bi?src=2&openingSiteId=5c1beed4-ac61-4783-a2ea-182dece51d13&originAppUrl=http%3A%2F%2Fwww.wix.com%2Fcreate%2Fwebsite&siteType=2"};
-    var analytics = {"staging":false,"code":"UA-2117194-1","domain":"wix.com","server":null};
-    var openAsTab = true;
 
-    //Storing dynamic text for responsive design
-    var headerTxt = {};
-    headerTxt.editButtonSmall = 'Edit';
-    headerTxt.mainHeaderSmall = 'Create your own amazing website';
+<script>
+     
+      // Now set up your game (most games will load a separate .js file)
+      var Q = Quintus()                          // Create a new engine instance
+              .include("Sprites, Scenes, Input, 2D, Touch, UI") // Load any needed modules
+              .setup()                           // Add a canvas element onto the page
+              .controls()                        // Add in default controls (keyboard, buttons)
+              .touch();                          // Add in touch support (for the UI)
+              
+      /*
+        ... Actual game code goes here ... 
+      */
 </script>
 
 <!-- FACEBOOK CODE API-->
