@@ -5,8 +5,9 @@ var Q = Quintus()
         
 Q.Sprite.extend("Player",{
   init: function(p) {
-    this._super(p, { sheet: "player", x: 410, y: 90 });
+    this._super(p, { sheet: "player", x: 40, y: 200 });
     this.add('2d, platformerControls');
+    this.p.gravity = 0
     
     this.on("hit.sprite",function(collision) {
       if(collision.obj.isA("Tower")) {
@@ -17,6 +18,8 @@ Q.Sprite.extend("Player",{
   }
 });
 
+Q.Sprite.extend
+
 Q.Sprite.extend("Tower", {
   init: function(p) {
     this._super(p, { sheet: 'tower' });
@@ -25,10 +28,10 @@ Q.Sprite.extend("Tower", {
 
 Q.Sprite.extend("Enemy",{
   init: function(p) {
-    this._super(p, { sheet: 'enemy', vx: 100 });
+    this._super(p, { sheet: 'enemy', vx: 0 });
     this.add('2d, aiBounce');
     
-    this.on("bump.left,bump.right,bump.bottom",function(collision) {
+    this.on("bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
         Q.stageScene("endGame",1, { label: "You Died" }); 
         collision.obj.destroy();
@@ -50,10 +53,10 @@ Q.scene("level1",function(stage) {
   
   stage.add("viewport").follow(player);
   
-  stage.insert(new Q.Enemy({ x: 700, y: 0 }));
-  stage.insert(new Q.Enemy({ x: 800, y: 0 }));
+  stage.insert(new Q.Enemy({ x: 700, y: -300 }));
+  stage.insert(new Q.Enemy({ x: 800, y: -300 }));
   
-  stage.insert(new Q.Tower({ x: 180, y: 50 }));
+//  stage.insert(new Q.Tower({ x: 0, y: 0 }));
 });
 
 Q.scene('endGame',function(stage) {
