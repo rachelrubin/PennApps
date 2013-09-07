@@ -10,7 +10,7 @@ Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
     
     this.on("hit.sprite",function(collision) {
       if(collision.obj.isA("Tower")) {
-        Q.stageScene("endGame",1, { label: "You Won!" }); 
+        Q.stageScene("endGame",1, { label: "You Won!" }); //if you collide with the object on the tower, message 'You Won' pops up. 
         this.destroy();
       }
     });
@@ -19,7 +19,7 @@ Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
 
 Q.Sprite.extend("Tower", {
   init: function(p) {
-    this._super(p, { sheet: 'tower' });
+    this._super(p, { sheet: 'tower' }); //Tower stylesheet 
   }
 });
 
@@ -31,7 +31,7 @@ Q.Sprite.extend("Enemy",{
     this.on("bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
         Q.stageScene("endGame",1, { label: "You Died" }); 
-        collision.obj.destroy();
+        collision.obj.destroy(); //this is what happens when you die
       }
     });
     
@@ -73,7 +73,7 @@ Q.scene('endGame',function(stage) {
 });
 
 Q.load("sprites.png, sprites.json, level.json, tiles.png", function() {
-  Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
+  Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 }); //tile info
   Q.compileSheets("sprites.png","sprites.json");
-  Q.stageScene("level1");
+  Q.stageScene("level1"); //load data for the game
 });
