@@ -1,8 +1,9 @@
 var Q = Quintus()
-        .include("Sprites, Scenes, Input, 2D, Touch, UI") //modules for sprites, scenes, background, 2d, and interface
+        .include("Sprites, Scenes, Input, 2D, Touch, UI") //modules for sprites, scenes, background, 2d, and interface. 2D module defines a number of components to make working with 2D games easier and the Input module defines components for having sprites be controlled by player input.
         .setup({ maximize: true }) //full screen
         .controls().touch() 
         
+<<<<<<< HEAD
 Q.Sprite.extend("Player",{
   init: function(p) { 
     this._super(p, { sheet: "player", x: 410, y: 90 }); //says where the player starts and calls sprite's constuctor function
@@ -12,6 +13,17 @@ Q.Sprite.extend("Player",{
       if(collision.obj.isA("Tower")) { //if the object the player collides into is a tower
         Q.stageScene("endGame",1, { label: "You Won!" }); // the game will end with a dialog box saying you won
         this.destroy(); //ends game
+=======
+Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
+  init: function(p) { //initializes function
+    this._super(p, { sheet: "player", x: 410, y: 90 }); //
+    this.add('2d, platformerControls');
+    
+    this.on("hit.sprite",function(collision) {
+      if(collision.obj.isA("Tower")) {
+        Q.stageScene("endGame",1, { label: "You Won!" }); //if you collide with the object on the tower, message 'You Won' pops up. 
+        this.destroy();
+>>>>>>> fee28089693153352e3f978e67f65ecf0c8fc0d0
       }
     });
   }
@@ -19,7 +31,7 @@ Q.Sprite.extend("Player",{
 
 Q.Sprite.extend("Tower", { //makes tower another extension of Sprite
   init: function(p) {
-    this._super(p, { sheet: 'tower' });
+    this._super(p, { sheet: 'tower' }); //Tower stylesheet 
   }
 });
 
@@ -28,10 +40,17 @@ Q.Sprite.extend("Enemy",{
     this._super(p, { sheet: 'enemy', vx: 100 }); //gets the sprite style sheet for the enemy
     this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
     
+<<<<<<< HEAD
     this.on("bump.left,bump.right,bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
       if(collision.obj.isA("Player")) { //and the bumper is a player
         Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
         collision.obj.destroy(); //the sprite is destroyed
+=======
+    this.on("bump.left,bump.right,bump.bottom",function(collision) {
+      if(collision.obj.isA("Player")) { 
+        Q.stageScene("endGame",1, { label: "You Died" }); 
+        collision.obj.destroy(); //this is what happens when you die
+>>>>>>> fee28089693153352e3f978e67f65ecf0c8fc0d0
       }
     });
     
@@ -73,7 +92,7 @@ Q.scene('endGame',function(stage) {
 });
 
 Q.load("sprites.png, sprites.json, level.json, tiles.png", function() {
-  Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
+  Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 }); //tile info
   Q.compileSheets("sprites.png","sprites.json");
-  Q.stageScene("level1");
+  Q.stageScene("level1"); //load data for the game
 });
