@@ -10,11 +10,6 @@ app.configure(function() {
 	app.set('view engine', 'ejs');
 	app.engine('ejs', require('ejs-locals'));
 
-	app.use(express.logger());
-	app.use(express.cookieParser());
-	app.use(express.bodyParser());
-	app.use(express.methodOverride());
-	app.use(express.session({ secret: process.env.SECRET }));
 	app.use(app.router);
 	app.use(express.static(__dirname + '/public'));
 });
@@ -27,6 +22,6 @@ app.get('/', function(req, res) {
 });
 
 // start listening
-app.listen( process.env.PORT , function() {
-  console.log('Express server listening on port ' + process.env.PORT);
+app.listen( 5000 , function() {
+  console.log('Express server listening on 5000');
 });
