@@ -1,23 +1,23 @@
 var Q = Quintus()
         .include("Sprites, Scenes, Input, 2D, Touch, UI") //modules for sprites, scenes, background, 2d, and interface
         .setup({ maximize: true }) //full screen
-        .controls().touch()
+        .controls().touch() 
         
 Q.Sprite.extend("Player",{
-  init: function(p) {
-    this._super(p, { sheet: "player", x: 410, y: 90 });
+  init: function(p) { 
+    this._super(p, { sheet: "player", x: 410, y: 90 }); //says where the player starts and calls sprite's constuctor function
     this.add('2d, platformerControls');
     
     this.on("hit.sprite",function(collision) {
-      if(collision.obj.isA("Tower")) {
-        Q.stageScene("endGame",1, { label: "You Won!" }); 
-        this.destroy();
+      if(collision.obj.isA("Tower")) { //if the object the player collides into is a tower
+        Q.stageScene("endGame",1, { label: "You Won!" }); // the game will end with a dialog box saying you won
+        this.destroy(); //ends game
       }
     });
   }
 });
 
-Q.Sprite.extend("Tower", {
+Q.Sprite.extend("Tower", { //makes tower another extension of Sprite
   init: function(p) {
     this._super(p, { sheet: 'tower' });
   }
@@ -25,20 +25,20 @@ Q.Sprite.extend("Tower", {
 
 Q.Sprite.extend("Enemy",{
   init: function(p) {
-    this._super(p, { sheet: 'enemy', vx: 100 });
-    this.add('2d, aiBounce');
+    this._super(p, { sheet: 'enemy', vx: 100 }); //gets the sprite style sheet for the enemy
+    this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
     
-    this.on("bump.left,bump.right,bump.bottom",function(collision) {
-      if(collision.obj.isA("Player")) { 
-        Q.stageScene("endGame",1, { label: "You Died" }); 
-        collision.obj.destroy();
+    this.on("bump.left,bump.right,bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
+      if(collision.obj.isA("Player")) { //and the bumper is a player
+        Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
+        collision.obj.destroy(); //the sprite is destroyed
       }
     });
     
     this.on("bump.top",function(collision) {
       if(collision.obj.isA("Player")) { 
         this.destroy();
-        collision.obj.p.vy = -300;
+        collision.obj.p.vy = -300; //reverses the direction of the player by 300
       }
     });
   }
