@@ -7,6 +7,7 @@ Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
   init: function(p) { //initializes function
     this._super(p, { sheet: "player", x: 410, y: 90 }); //says where the player starts and calls sprite's constuctor function
     this.add('2d, platformerControls');
+    this.p.gravity = 0
     
     this.on("hit.sprite",function(collision) {
       if(collision.obj.isA("Tower")) { //if the object the player collides into is a tower
@@ -25,6 +26,7 @@ Q.Sprite.extend("Tower", { //makes tower another extension of Sprite
 
 Q.Sprite.extend("Enemy",{
   init: function(p) {
+<<<<<<< HEAD
     this._super(p, { sheet: 'enemy', vx: 100 }); //gets the sprite style sheet for the enemy
     this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
     
@@ -32,6 +34,15 @@ Q.Sprite.extend("Enemy",{
       if(collision.obj.isA("Player")) { //and the bumper is a player
         Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
         collision.obj.destroy(); //the sprite is destroyed
+=======
+    this._super(p, { sheet: 'enemy', vx: 0 });
+    this.add('2d, aiBounce');
+    
+    this.on("bump.bottom",function(collision) {
+      if(collision.obj.isA("Player")) { 
+        Q.stageScene("endGame",1, { label: "You Died" }); 
+        collision.obj.destroy(); 
+>>>>>>> c27d57e59723eaa670291ec86c0d5ea1ff053ab4
       }
     });
     
@@ -50,10 +61,10 @@ Q.scene("level1",function(stage) {
   
   stage.add("viewport").follow(player);
   
-  stage.insert(new Q.Enemy({ x: 700, y: 0 }));
-  stage.insert(new Q.Enemy({ x: 800, y: 0 }));
+  stage.insert(new Q.Enemy({ x: 700, y: -300 }));
+  stage.insert(new Q.Enemy({ x: 800, y: -300 }));
   
-  stage.insert(new Q.Tower({ x: 180, y: 50 }));
+//  stage.insert(new Q.Tower({ x: 0, y: 0 }));
 });
 
 Q.scene('endGame',function(stage) {
