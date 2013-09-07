@@ -1,11 +1,11 @@
 var Q = Quintus()
-        .include("Sprites, Scenes, Input, 2D, Touch, UI")
-        .setup({ maximize: true })
-        .controls().touch()
+        .include("Sprites, Scenes, Input, 2D, Touch, UI") 
+        .setup({ maximize: true }) 
+        .controls().touch() 
         
-Q.Sprite.extend("Player",{
-  init: function(p) {
-    this._super(p, { sheet: "player", x: 40, y: 200 });
+Q.Sprite.extend("Player",{ 
+  init: function(p) { 
+    this._super(p, { sheet: "player", x: 410, y: 90 }); 
     this.add('2d, platformerControls');
     this.p.gravity = 0
     
@@ -18,11 +18,9 @@ Q.Sprite.extend("Player",{
   }
 });
 
-Q.Sprite.extend
-
 Q.Sprite.extend("Tower", {
   init: function(p) {
-    this._super(p, { sheet: 'tower' });
+    this._super(p, { sheet: 'tower' });  
   }
 });
 
@@ -34,14 +32,14 @@ Q.Sprite.extend("Enemy",{
     this.on("bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
         Q.stageScene("endGame",1, { label: "You Died" }); 
-        collision.obj.destroy();
+        collision.obj.destroy(); 
       }
     });
     
     this.on("bump.top",function(collision) {
       if(collision.obj.isA("Player")) { 
         this.destroy();
-        collision.obj.p.vy = -300;
+        collision.obj.p.vy = -300; 
       }
     });
   }
@@ -76,7 +74,7 @@ Q.scene('endGame',function(stage) {
 });
 
 Q.load("sprites.png, sprites.json, level.json, tiles.png", function() {
-  Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
+  Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 }); 
   Q.compileSheets("sprites.png","sprites.json");
-  Q.stageScene("level1");
+  Q.stageScene("level1"); 
 });
