@@ -1,6 +1,6 @@
 var Q = Quintus()
-        .include("Sprites, Scenes, Input, 2D, Touch, UI")
-        .setup({ maximize: true })
+        .include("Sprites, Scenes, Input, 2D, Touch, UI") //modules for sprites, scenes, background, 2d, and interface
+        .setup({ maximize: true }) //full screen
         .controls().touch()
         
 Q.Sprite.extend("Player",{
