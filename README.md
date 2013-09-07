@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 PennApps
 ========
 
@@ -5,6 +6,4 @@ Quaker Game
 
 ImaadC
 nikhilvenkatesa
-Rachel Rubin 
-
-#glorious
+Rachel Rubin
