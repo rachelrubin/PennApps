@@ -26,7 +26,6 @@ Q.Sprite.extend("Tower", { //makes tower another extension of Sprite
 
 Q.Sprite.extend("Enemy",{
   init: function(p) {
-<<<<<<< HEAD
     this._super(p, { sheet: 'enemy', vx: 100 }); //gets the sprite style sheet for the enemy
     this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
     
@@ -34,15 +33,6 @@ Q.Sprite.extend("Enemy",{
       if(collision.obj.isA("Player")) { //and the bumper is a player
         Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
         collision.obj.destroy(); //the sprite is destroyed
-=======
-    this._super(p, { sheet: 'enemy', vx: 0 });
-    this.add('2d, aiBounce');
-    
-    this.on("bump.bottom",function(collision) {
-      if(collision.obj.isA("Player")) { 
-        Q.stageScene("endGame",1, { label: "You Died" }); 
-        collision.obj.destroy(); 
->>>>>>> c27d57e59723eaa670291ec86c0d5ea1ff053ab4
       }
     });
     
