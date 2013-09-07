@@ -1,16 +1,16 @@
 var Q = Quintus()
-        .include("Sprites, Scenes, Input, 2D, Touch, UI") //modules for sprites, scenes, background, 2d, and interface. 2D module defines a number of components to make working with 2D games easier and the Input module defines components for having sprites be controlled by player input.
-        .setup({ maximize: true }) //full screen
+        .include("Sprites, Scenes, Input, 2D, Touch, UI") 
+        .setup({ maximize: true }) 
         .controls().touch() 
         
-Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
-  init: function(p) { //initializes function
-    this._super(p, { sheet: "player", x: 410, y: 90 }); //
+Q.Sprite.extend("Player",{ 
+  init: function(p) { 
+    this._super(p, { sheet: "player", x: 410, y: 90 }); 
     this.add('2d, platformerControls');
     
     this.on("hit.sprite",function(collision) {
       if(collision.obj.isA("Tower")) {
-        Q.stageScene("endGame",1, { label: "You Won!" }); //if you collide with the object on the tower, message 'You Won' pops up. 
+        Q.stageScene("endGame",1, { label: "You Won!" }); 
         this.destroy();
       }
     });
@@ -19,7 +19,7 @@ Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
 
 Q.Sprite.extend("Tower", {
   init: function(p) {
-    this._super(p, { sheet: 'tower' }); //Tower stylesheet 
+    this._super(p, { sheet: 'tower' });  
   }
 });
 
@@ -31,14 +31,14 @@ Q.Sprite.extend("Enemy",{
     this.on("bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
         Q.stageScene("endGame",1, { label: "You Died" }); 
-        collision.obj.destroy(); //this is what happens when you die
+        collision.obj.destroy(); 
       }
     });
     
     this.on("bump.top",function(collision) {
       if(collision.obj.isA("Player")) { 
         this.destroy();
-        collision.obj.p.vy = -300;
+        collision.obj.p.vy = -300; 
       }
     });
   }
@@ -73,7 +73,7 @@ Q.scene('endGame',function(stage) {
 });
 
 Q.load("sprites.png, sprites.json, level.json, tiles.png", function() {
-  Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 }); //tile info
+  Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 }); 
   Q.compileSheets("sprites.png","sprites.json");
-  Q.stageScene("level1"); //load data for the game
+  Q.stageScene("level1"); 
 });
