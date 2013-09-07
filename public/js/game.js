@@ -1,11 +1,11 @@
 var Q = Quintus()
-        .include("Sprites, Scenes, Input, 2D, Touch, UI") //modules for sprites, scenes, background, 2d, and interface
+        .include("Sprites, Scenes, Input, 2D, Touch, UI") //modules for sprites, scenes, background, 2d, and interface. 2D module defines a number of components to make working with 2D games easier and the Input module defines components for having sprites be controlled by player input.
         .setup({ maximize: true }) //full screen
-        .controls().touch()
+        .controls().touch() 
         
-Q.Sprite.extend("Player",{
-  init: function(p) {
-    this._super(p, { sheet: "player", x: 410, y: 90 });
+Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
+  init: function(p) { //initializes function
+    this._super(p, { sheet: "player", x: 410, y: 90 }); //
     this.add('2d, platformerControls');
     
     this.on("hit.sprite",function(collision) {
