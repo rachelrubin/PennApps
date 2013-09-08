@@ -209,7 +209,7 @@ Q.scene("level1",function(stage) {
     setTimeout(addToast, getTimeout());
   }
 
-  addPoisonOat();
+  addToast();
 
    function addFireBall() {
     stage.insert(new Q.FireBall({ x: Math.floor(Math.random()*1500), y: -500 }));
