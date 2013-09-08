@@ -8,7 +8,7 @@
 		"frames":1
 		},
 
-	"enemy":
+	"tiger":
 		{"sx":361,
 		"sy":7,
 		"cols":1,
@@ -16,7 +16,45 @@
 		"tileh":66,
 		"frames":1},
 
-	"tower":
+	"fireball":
+		{"sx":0,
+		"sy":54,
+		"cols":1,
+		"tilew":30,
+		"tileh":30,
+		"frames":1}
+
+	"regularoat":
+		{"sx":0,
+		"sy":54,
+		"cols":1,
+		"tilew":30,
+		"tileh":30,
+		"frames":1}
+
+	"poisonoat":
+		{"sx":0,
+		"sy":54,
+		"cols":1,
+		"tilew":30,
+		"tileh":30,
+		"frames":1}
+	"doubleoat":
+		{"sx":0,
+		"sy":54,
+		"cols":1,
+		"tilew":30,
+		"tileh":30,
+		"frames":1}
+
+	"toast":
+		{"sx":0,
+		"sy":54,
+		"cols":1,
+		"tilew":30,
+		"tileh":30,
+		"frames":1}
+	"frootloop":
 		{"sx":0,
 		"sy":54,
 		"cols":1,

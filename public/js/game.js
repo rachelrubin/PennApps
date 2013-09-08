@@ -8,42 +8,109 @@ Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
     this._super(p, { sheet: "player", x: 410, y: 90 }); //says where the player starts and calls sprite's constuctor function. this._super is to override Q.Sprite functions
     this.add('2d, platformerControls');
     this.p.gravity = 0
-    
-    this.on("hit.sprite",function(collision) {
-      if(collision.obj.isA("Tower")) { //if the object the player collides into is a tower
-        Q.stageScene("endGame",1, { label: "You Won!" }); // the game will end with a dialog box saying you won
-        this.destroy(); //ends game
       }
     });
   }
 });
 
-Q.Sprite.extend("Tower", { //makes tower another extension of Sprite
+Q.Sprite.extend("FallingObject",{
   init: function(p) {
-    this._super(p, { sheet: 'tower' });  
-  }
-});
-
-Q.Sprite.extend("Enemy",{
-  init: function(p) {
-    this._super(p, { sheet: 'enemy', vx: 100 }); //gets the sprite style sheet for the enemy
+    this._super(p, { sheet: 'enemy', vx: 0 }); //gets the sprite style sheet for the enemy
     this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
     
-    this.on("bump.left,bump.right,bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
+    this.on("bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
       if(collision.obj.isA("Player")) { //and the bumper is a player
         Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
         collision.obj.destroy(); //the sprite is destroyed
       }
-    });
-    
-    this.on("bump.top",function(collision) { //if the player bumps the enemy on top it will destroy the enemy sprite
-      if(collision.obj.isA("Player")) { 
-        this.destroy(); 
-        collision.obj.p.vy = -300; //reverses the direction of the player by 300
-      }
-    });
+    });  
   }
 });
+
+Q.Sprite.extend("FireBall",{
+  init: function(p) {
+    this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy
+    this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
+    
+    this.on("bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
+      if(collision.obj.isA("Player")) { //and the bumper is a player
+        Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
+        collision.obj.destroy(); //the sprite is destroyed
+      }
+    });  
+  }
+});
+
+Q.Sprite.extend("RegularOat",{
+  init: function(p) {
+    this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy
+    this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
+    
+    this.on("bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
+      if(collision.obj.isA("Player")) { //and the bumper is a player
+        Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
+        collision.obj.destroy(); //the sprite is destroyed
+      }
+    });  
+  }
+});
+
+Q.Sprite.extend("PoisonOat",{
+  init: function(p) {
+    this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy
+    this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
+    
+    this.on("bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
+      if(collision.obj.isA("Player")) { //and the bumper is a player
+        Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
+        collision.obj.destroy(); //the sprite is destroyed
+      }
+    });  
+  }
+});
+
+Q.Sprite.extend("DoubleOat",{
+  init: function(p) {
+    this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy
+    this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
+    
+    this.on("bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
+      if(collision.obj.isA("Player")) { //and the bumper is a player
+        Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
+        collision.obj.destroy(); //the sprite is destroyed
+      }
+    });  
+  }
+});
+
+Q.Sprite.extend("Toast",{
+  init: function(p) {
+    this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy
+    this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
+    
+    this.on("bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
+      if(collision.obj.isA("Player")) { //and the bumper is a player
+        Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
+        collision.obj.destroy(); //the sprite is destroyed
+      }
+    });  
+  }
+});
+
+Q.Sprite.extend("FrootLoop",{
+  init: function(p) {
+    this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy
+    this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
+    
+    this.on("bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
+      if(collision.obj.isA("Player")) { //and the bumper is a player
+        Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
+        collision.obj.destroy(); //the sprite is destroyed
+      }
+    });  
+  }
+});
+
 
 Q.scene("level1",function(stage) {
   stage.collisionLayer(new Q.TileLayer({ dataAsset: 'level.json', sheet: 'tiles' }));
@@ -51,8 +118,8 @@ Q.scene("level1",function(stage) {
   
   stage.add("viewport").follow(player);
   
-  stage.insert(new Q.Enemy({ x: 700, y: -300 }));
-  stage.insert(new Q.Enemy({ x: 800, y: -300 }));
+  stage.insert(new Q.Tiger({ x: 700, y: -300 }));
+  stage.insert(new Q.Tiger({ x: 800, y: -300 }));
   
 //  stage.insert(new Q.Tower({ x: 0, y: 0 }));
 });
