@@ -27,6 +27,11 @@ var Lifer = {
   }
 };
 
+var progressed = 0;
+setInterval(function() {
+    progressed++;
+},10);
+
 
 $(document).ready(function() {
   Pointer.draw();
@@ -59,11 +64,12 @@ Q.Sprite.extend("FallingObject",{
         this.p.collisionMask = 0;
       };
     });
+
     this.collided = false;
 
     this.on("bump.bottom", function(collision) {
+        
       if(collision.obj.isA("Player") && this.collided == false){
-        console.log(collision);
         this.collided = true;
         this.caught();
       }
@@ -155,6 +161,7 @@ Q.scene("level1",function(stage) {
   Pointer.draw();
   
   // stage.add("viewport").follow(player);
+
   function getTimeout() {
     return Math.floor(Math.random() * 5000);
   }
@@ -174,7 +181,11 @@ Q.scene("level1",function(stage) {
   }
 
   addDoubleOat();
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> cb41dc34c6055d5b0ff9657c12bdffd7630de964
   function addFrootLoop() {
     stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1500), y: -500 }));
 
@@ -197,7 +208,7 @@ Q.scene("level1",function(stage) {
     setTimeout(addToast, getTimeout());
   }
 
-  addPoisonOat();
+  addToast();
 
    function addFireBall() {
     stage.insert(new Q.FireBall({ x: Math.floor(Math.random()*1500), y: -500 }));
