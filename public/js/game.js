@@ -38,14 +38,14 @@ var player;
 
 Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
   init: function(p) { //initializes function
-    this._super(p, { sheet: "player", x: 410, y: 510, gravity: 0 , speed: 700}); //says where the player starts and calls sprite's constuctor function. this._super is to override Q.Sprite functions
+    this._super(p, { sheet: "player", x: 410, y: 510, gravity: 0 , speed: 700, collisionMask: 2}); //says where the player starts and calls sprite's constuctor function. this._super is to override Q.Sprite functions
     this.add('2d, platformerControls');
   }
 });
 
 Q.Sprite.extend("FallingObject",{
   init: function(p) {
-    this._super(Q._defaults(p, {sheet: 'tiger', vx: 0, gravity:0.025}));
+    this._super(Q._defaults(p, {sheet: 'tiger', vx: 0, gravity:0.025, collisionMask: 2}));
     this.add('2d');
     this.collided = false;
 
