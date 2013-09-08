@@ -17,19 +17,19 @@
 		"frames":1},
 
 	"fireball":
-		{"sx":0,
-		"sy":54,
+		{"sx":371,
+		"sy":77,
 		"cols":1,
-		"tilew":30,
-		"tileh":30,
+		"tilew":74,
+		"tileh": 79,
 		"frames":1},
 
 	"regularoat":
-		{"sx":0,
-		"sy":54,
+		{"sx":196,
+		"sy":75,
 		"cols":1,
-		"tilew":30,
-		"tileh":30,
+		"tilew":44,
+		"tileh":61,
 		"frames":1},
 
 	"poisonoat":
@@ -39,27 +39,28 @@
 		"tilew":30,
 		"tileh":30,
 		"frames":1},
+		
 	"doubleoat":
-		{"sx":0,
-		"sy":54,
+		{"sx":273,
+		"sy":0,
 		"cols":1,
-		"tilew":30,
-		"tileh":30,
+		"tilew":63,
+		"tileh":66,
 		"frames":1},
 
 	"toast":
-		{"sx":0,
-		"sy":54,
+		{"sx":189,
+		"sy":3,
 		"cols":1,
-		"tilew":30,
-		"tileh":30,
+		"tilew":65,
+		"tileh":58,
 		"frames":1},
 		
 	"frootloop":
-		{"sx":0,
-		"sy":54,
+		{"sx":194,
+		"sy":152,
 		"cols":1,
-		"tilew":30,
-		"tileh":30,
+		"tilew":56,
+		"tileh":56,
 		"frames":1}
 }
