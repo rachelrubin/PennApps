@@ -165,14 +165,14 @@ Q.scene("level1",function(stage) {
   function getTimeout(base) {
       // return base * 1000 * 
       // console.log(progressed);
-      return base*(Math.pow((Math.E),(-progressed/1000)));
+      return base*(Math.pow((Math.E),(-progressed/7500)));
     // return Math.floor(Math.random() * 5000);
   }
 
   function addTiger() {
     stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addTiger, getTimeout(3000));
+    setTimeout(addTiger, getTimeout(8500));
   }
 
   setTimeout(addTiger, getTimeout(1));
@@ -180,23 +180,15 @@ Q.scene("level1",function(stage) {
   function addDoubleOat() {
     stage.insert(new Q.DoubleOat({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addDoubleOat, getTimeout(9000));
+    setTimeout(addDoubleOat, getTimeout(9500));
   }
 
-<<<<<<< HEAD
-  addDoubleOat();
-<<<<<<< HEAD
-
-=======
-=======
   setTimeout(addDoubleOat, getTimeout(500));
->>>>>>> 5835499487ef2b070fa98f46b6230f7c7f44eb75
-  
->>>>>>> cb41dc34c6055d5b0ff9657c12bdffd7630de964
+
   function addFrootLoop() {
     stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addFrootLoop, getTimeout(8000));
+    setTimeout(addFrootLoop, getTimeout(11000));
   }
 
   setTimeout(addFrootLoop, getTimeout(8000));
@@ -204,7 +196,7 @@ Q.scene("level1",function(stage) {
   function addPoisonOat() {
     stage.insert(new Q.PoisonOat({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addPoisonOat, getTimeout(7500));
+    setTimeout(addPoisonOat, getTimeout(8000));
   }
 
   setTimeout(addPoisonOat, getTimeout(10000));
@@ -212,7 +204,7 @@ Q.scene("level1",function(stage) {
    function addToast() {
     stage.insert(new Q.Toast({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addToast, getTimeout(6500));
+    setTimeout(addToast, getTimeout(13000));
   }
 
   setTimeout(addToast, getTimeout(2000));
@@ -220,7 +212,7 @@ Q.scene("level1",function(stage) {
    function addFireBall() {
     stage.insert(new Q.FireBall({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addFireBall, getTimeout(6500));
+    setTimeout(addFireBall, getTimeout(7500));
   }
 
   setTimeout(addFireBall, getTimeout(3000));
