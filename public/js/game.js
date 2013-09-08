@@ -90,7 +90,8 @@ Q.FallingObject.extend("FireBall",{
   caught: function() {
     Pointer.points = Pointer.points - 5;
     Pointer.draw();
-});
+}}
+ 
 // Q.FallingObject.extend("FireBall",{
 //   init: function(p) {
 //     this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy 
@@ -126,9 +127,8 @@ Q.FallingObject.extend("FireBall",{
 //   init: function(p) {
 //   }
 // });
-=======
-  }
-});
+//  }
+//});
 
 Q.FallingObject.extend("DoubleOat",{
   init: function(p) {
@@ -141,7 +141,7 @@ Q.FallingObject.extend("DoubleOat",{
   }
 });
 
-Q.Sprite.extend("Toast",{
+Q.FallingObject.extend("Toast",{
   init: function(p) { 
   },
   caught: function() {
@@ -150,7 +150,7 @@ Q.Sprite.extend("Toast",{
   }
 });
 
-Q.Sprite.extend("FrootLoop",{
+Q.FallingObject.extend("FrootLoop",{
   init: function(p) {
     this._super(p, { sheet: 'doubleoat', vx: 0 });
      this.add('2d');
