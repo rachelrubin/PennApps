@@ -3,31 +3,47 @@ var Q = Quintus()
         .setup({ maximize: true }) 
         .controls().touch() 
 
+var Pointer = {
+  points: 0,
+  draw: function () {
+    console.log(this.points);
+  }
+}
+
+$(document).ready(function() {
+  Pointer.draw();
+})
+
 Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
   init: function(p) { //initializes function
-    this._super(p, { sheet: "player", x: 410, y: 510, gravity: 0 }); //says where the player starts and calls sprite's constuctor function. this._super is to override Q.Sprite functions
+    this._super(p, { sheet: "player", x: 410, y: 510, gravity: 0 , speed: 500}); //says where the player starts and calls sprite's constuctor function. this._super is to override Q.Sprite functions
     this.add('2d, platformerControls');
   }
 });
 
 Q.Sprite.extend("FallingObject",{
   init: function(p) {
-    this._super(p, { sheet: 'enemy', vx: 0 }); //gets the sprite style sheet for the enemy
+    this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy
     this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
     
-    this.on("bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
-      if(collision.obj.isA("Player")) { //and the bumper is a player
-        Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
-        collision.obj.destroy(); //the sprite is destroyed
+
+    this.on("hit", function(collision) {
+      if(collision.obj.isA("Player")){
+        this.caught();
       }
-    });  
+      this.destroy();
+    })  
   }
 });
 
 Q.FallingObject.extend("RegularOat",{
   init: function(p) {
     this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy 
-  }
+  }, 
+  caught: function() {
+    Pointer.points = Pointer.points + 1;
+    Pointer.draw();
+  } 
 });
 // //Q.FallingObject.extend("FireBall",{
 //   init: function(p) {
@@ -72,8 +88,8 @@ Q.scene("level1",function(stage) {
   
   // stage.add("viewport").follow(player);
   
-  stage.insert(new Q.RegularOat({ x: 700, y: -300 }));
-  stage.insert(new Q.RegularOat({ x: 800, y: -300 }));
+  stage.insert(new Q.RegularOat({ x: 410, y: -300 }));
+  //stage.insert(new Q.RegularOat({ x: 800, y: -300 }));
   
 //  stage.insert(new Q.Tower({ x: 0, y: 0 }));
 });
