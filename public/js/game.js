@@ -28,9 +28,9 @@ var Lifer = {
 };
 
 var progressed = 0;
-Q.gameLoop(function(dt) {
-    progressed = progressed + dt;
- });
+setInterval(function() {
+    progressed++;
+},10);
 
 
 $(document).ready(function() {
@@ -161,10 +161,7 @@ Q.scene("level1",function(stage) {
   Pointer.draw();
   
   // stage.add("viewport").follow(player);
-<<<<<<< HEAD
-  
-  stage.insert(new Q.RegularOat({ x: Math.floor(Math.random()*1600), y: -10 }));
-=======
+
   function getTimeout() {
     return Math.floor(Math.random() * 5000);
   }
@@ -177,10 +174,6 @@ Q.scene("level1",function(stage) {
 
   addTiger();
 
-  function getTimeout() {
-    return Math.floor(Math.random() * 5000);
-  }
-
   function addDoubleOat() {
     stage.insert(new Q.DoubleOat({ x: Math.floor(Math.random()*1500), y: -500 }));
 
@@ -188,11 +181,7 @@ Q.scene("level1",function(stage) {
   }
 
   addDoubleOat();
-
-  function getTimeout() {
-    return Math.floor(Math.random() * 5000);
-  }
-
+  
   function addFrootLoop() {
     stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1500), y: -500 }));
 
@@ -200,10 +189,6 @@ Q.scene("level1",function(stage) {
   }
 
   addFrootLoop();
-
-  function getTimeout() {
-    return Math.floor(Math.random() * 5000);
-  }
 
   function addPoisonOat() {
     stage.insert(new Q.PoisonOat({ x: Math.floor(Math.random()*1500), y: -500 }));
@@ -228,7 +213,6 @@ Q.scene("level1",function(stage) {
   }
 
   addFireBall();
->>>>>>> a82181cdccc0e452e4d35db2580f6c72a5e374fa
 
   // setTimeout(function(){stage.insert(new Q.RegularOat({ x: Math.floor(Math.random()*1500), y: -500 }));}, Math.floor(Math.random()*time));
   // setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1500), y: -500 }));}, Math.floor(Math.random()*time));
