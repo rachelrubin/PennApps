@@ -1,6 +1,8 @@
 var Q = Quintus()
         .include("Sprites, Scenes, Input, 2D, Touch, UI") 
-        .setup({ maximize: true }) 
+        .setup({ 
+        width: 1500,
+        height: 700}) 
         .controls().touch() 
 
 var Pointer = {
@@ -41,27 +43,29 @@ $(document).ready(function() {
 
 var player;
 
+
 Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
   init: function(p) { //initializes function
     this._super(p, { sheet: "player", x: 410, y: 510, gravity: 0 , speed: 700, collisionMask: 2}); //says where the player starts and calls sprite's constuctor function. this._super is to override Q.Sprite functions
     this.add('2d, platformerControls');
+
   }
 });
 
 Q.Sprite.extend("FallingObject",{
   init: function(p) {
-    this._super(Q._defaults(p, {sheet: 'tiger', vx: 0, gravity:0.025}));
+    this._super(Q._defaults(p, {sheet: 'tiger', vx: 0, gravity:0.025, collisionMask: 2}));
     this.add('2d');
-        
-    this.collided = false;
-    
     this.on("step", function() {
-        if( this.p.y > 640) {
-            this.destroy();
-        } else if( this.p.y > 325 ) {
-            this.p.collisionMask = 2;
-        }
+      if(this.p.y > 360) {
+        this.p.collisionMask = 2;
+      }
+      else {
+        this.p.collisionMask = 0;
+      };
     });
+
+    this.collided = false;
 
     this.on("bump.bottom", function(collision) {
         
@@ -138,7 +142,7 @@ Q.FallingObject.extend("Toast",{
 
 Q.FallingObject.extend("FrootLoop",{
   init: function(p) {
-    this._super(Q._defaults(p, { sheet: 'doubleoat', vx: 0 }));
+    this._super(Q._defaults(p, { sheet: 'frootloop', vx: 0 }));
      this.add('2d');
   },
   caught: function() {
@@ -157,16 +161,82 @@ Q.scene("level1",function(stage) {
   Pointer.draw();
   
   // stage.add("viewport").follow(player);
+<<<<<<< HEAD
   
   stage.insert(new Q.RegularOat({ x: Math.floor(Math.random()*1600), y: -10 }));
+=======
+  function getTimeout() {
+    return Math.floor(Math.random() * 5000);
+  }
 
-  setInterval(function(){stage.insert(new Q.RegularOat({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
-  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
-  setInterval(function(){stage.insert(new Q.PoisonOat({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
-  setInterval(function(){stage.insert(new Q.DoubleOat({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
-  setInterval(function(){stage.insert(new Q.FireBall({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
-  setInterval(function(){stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
-  setInterval(function(){stage.insert(new Q.Toast({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
+  function addTiger() {
+    stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1500), y: -500 }));
+
+    setTimeout(addTiger, getTimeout());
+  }
+
+  addTiger();
+
+  function getTimeout() {
+    return Math.floor(Math.random() * 5000);
+  }
+
+  function addDoubleOat() {
+    stage.insert(new Q.DoubleOat({ x: Math.floor(Math.random()*1500), y: -500 }));
+
+    setTimeout(addDoubleOat, getTimeout());
+  }
+
+  addDoubleOat();
+
+  function getTimeout() {
+    return Math.floor(Math.random() * 5000);
+  }
+
+  function addFrootLoop() {
+    stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1500), y: -500 }));
+
+    setTimeout(addFrootLoop, getTimeout());
+  }
+
+  addFrootLoop();
+
+  function getTimeout() {
+    return Math.floor(Math.random() * 5000);
+  }
+
+  function addPoisonOat() {
+    stage.insert(new Q.PoisonOat({ x: Math.floor(Math.random()*1500), y: -500 }));
+
+    setTimeout(addPoisonOat, getTimeout());
+  }
+
+  addPoisonOat();
+
+   function addToast() {
+    stage.insert(new Q.Toast({ x: Math.floor(Math.random()*1500), y: -500 }));
+
+    setTimeout(addToast, getTimeout());
+  }
+
+  addToast();
+
+   function addFireBall() {
+    stage.insert(new Q.FireBall({ x: Math.floor(Math.random()*1500), y: -500 }));
+
+    setTimeout(addFireBall, getTimeout());
+  }
+
+  addFireBall();
+>>>>>>> a82181cdccc0e452e4d35db2580f6c72a5e374fa
+
+  // setTimeout(function(){stage.insert(new Q.RegularOat({ x: Math.floor(Math.random()*1500), y: -500 }));}, Math.floor(Math.random()*time));
+  // setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1500), y: -500 }));}, Math.floor(Math.random()*time));
+  // setInterval(function(){stage.insert(new Q.PoisonOat({ x: Math.floor(Math.random()*1500), y: -500 }));}, Math.floor(Math.random()*time));
+  // setInterval(function(){stage.insert(new Q.DoubleOat({ x: Math.floor(Math.random()*1500), y: -500 }));}, Math.floor(Math.random()*time));
+  // setInterval(function(){stage.insert(new Q.FireBall({ x: Math.floor(Math.random()*1500), y: -500 }));}, Math.floor(Math.random()*time));
+  // setInterval(function(){stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1500), y: -500 }));}, Math.floor(Math.random()*time));
+  // setInterval(function(){stage.insert(new Q.Toast({ x: Math.floor(Math.random()*1500), y: -500 }));}, Math.floor(Math.random()*time));
 });
 
 Q.scene('endGame',function(stage) {
