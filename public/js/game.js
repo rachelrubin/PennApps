@@ -162,57 +162,60 @@ Q.scene("level1",function(stage) {
   
   // stage.add("viewport").follow(player);
 
-  function getTimeout() {
-    return Math.floor(Math.random() * 5000);
+  function getTimeout(base) {
+      // return base * 1000 * 
+      // console.log(progressed);
+      return base*(Math.pow((Math.E),(-progressed/1000)));
+    // return Math.floor(Math.random() * 5000);
   }
 
   function addTiger() {
-    stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1500), y: -500 }));
+    stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addTiger, getTimeout());
+    setTimeout(addTiger, getTimeout(3000));
   }
 
-  addTiger();
+  setTimeout(addTiger, getTimeout(1));
 
   function addDoubleOat() {
-    stage.insert(new Q.DoubleOat({ x: Math.floor(Math.random()*1500), y: -500 }));
+    stage.insert(new Q.DoubleOat({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addDoubleOat, getTimeout());
+    setTimeout(addDoubleOat, getTimeout(9000));
   }
 
-  addDoubleOat();
+  setTimeout(addDoubleOat, getTimeout(500));
   
   function addFrootLoop() {
-    stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1500), y: -500 }));
+    stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addFrootLoop, getTimeout());
+    setTimeout(addFrootLoop, getTimeout(8000));
   }
 
-  addFrootLoop();
+  setTimeout(addFrootLoop, getTimeout(8000));
 
   function addPoisonOat() {
-    stage.insert(new Q.PoisonOat({ x: Math.floor(Math.random()*1500), y: -500 }));
+    stage.insert(new Q.PoisonOat({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addPoisonOat, getTimeout());
+    setTimeout(addPoisonOat, getTimeout(7500));
   }
 
-  addPoisonOat();
+  setTimeout(addPoisonOat, getTimeout(10000));
 
    function addToast() {
-    stage.insert(new Q.Toast({ x: Math.floor(Math.random()*1500), y: -500 }));
+    stage.insert(new Q.Toast({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addToast, getTimeout());
+    setTimeout(addToast, getTimeout(6500));
   }
 
-  addToast();
+  setTimeout(addToast, getTimeout(2000));
 
    function addFireBall() {
-    stage.insert(new Q.FireBall({ x: Math.floor(Math.random()*1500), y: -500 }));
+    stage.insert(new Q.FireBall({ x: Math.floor(Math.random()*1500), y: -100 }));
 
-    setTimeout(addFireBall, getTimeout());
+    setTimeout(addFireBall, getTimeout(6500));
   }
 
-  addFireBall();
+  setTimeout(addFireBall, getTimeout(3000));
 
   // setTimeout(function(){stage.insert(new Q.RegularOat({ x: Math.floor(Math.random()*1500), y: -500 }));}, Math.floor(Math.random()*time));
   // setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1500), y: -500 }));}, Math.floor(Math.random()*time));
