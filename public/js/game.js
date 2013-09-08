@@ -18,7 +18,7 @@ var Lifer = {
     $("#lives").text(this.lives);
     if (Lifer.lives < 1){
         Q.stageScene('endGame', 1, {
-          label: "You're Dead!"
+          label: "You're toast!!"
         });
     }
 
@@ -47,11 +47,11 @@ Q.Sprite.extend("FallingObject",{
   init: function(p) {
     this._super(Q._defaults(p, {sheet: 'tiger', vx: 0, gravity:0.025}));
     this.add('2d');
-    
     this.collided = false;
 
-    this.on("hit", function(collision) {
+    this.on("bump.bottom", function(collision) {
       if(collision.obj.isA("Player") && this.collided == false){
+        console.log(collision);
         this.collided = true;
         this.caught();
       }
