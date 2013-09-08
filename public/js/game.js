@@ -73,52 +73,52 @@ Q.FallingObject.extend("Tiger",{
   }
 });
 
-// Q.FallingObject.extend("FireBall",{
-//   init: function(p) {
-//     this._super(p, { sheet: 'fireball', vx: 0 });
-//    },
-//     caught: function() {
-//     Lifer.lives = Lifer.lives - 2;
-//     Lifer.draw();
-//   }
-// });
+Q.FallingObject.extend("FireBall",{
+  init: function(p) {
+    this._super(p, { sheet: 'fireball', vx: 0 });
+   },
+    caught: function() {
+    Lifer.lives = Lifer.lives - 2;
+    Lifer.draw();
+  }
+});
 
-//  Q.FallingObject.extend("PoisonOat",{
-//   init: function(p) {
-//     this._super(p, { sheet: 'poisonoat', vx: 0 }); //gets the sprite style sheet for the enemy 
-//   },
-//   caught: function() {
-//     Pointer.points = Pointer.points - 5;
-//     Pointer.draw();
-// });
+ Q.FallingObject.extend("PoisonOat",{
+  init: function(p) {
+    this._super(p, { sheet: 'poisonoat', vx: 0 }); //gets the sprite style sheet for the enemy 
+  },
+  caught: function() {
+    Pointer.points = Pointer.points - 5;
+    Pointer.draw();
+});
 
-// Q.FallingObject.extend("DoubleOat",{
-//   init: function(p) {
-//     this._super(p, { sheet: 'doubleoat', vx: 0 }); //gets the sprite style sheet for the enemy
-//     this.add('2d'); //aibounce makes them bounce off of walls
-//   },
-//   caught: function() {
-//     Pointer.points = Pointer.points + 5;
-//     Pointer.draw();
-// });
+Q.FallingObject.extend("DoubleOat",{
+  init: function(p) {
+    this._super(p, { sheet: 'doubleoat', vx: 0 }); //gets the sprite style sheet for the enemy
+    this.add('2d'); //aibounce makes them bounce off of walls
+  },
+  caught: function() {
+    Pointer.points = Pointer.points + 5;
+    Pointer.draw();
+});
 
-// Q.Sprite.extend("Toast",{
-//   init: function(p) { 
-//   },
-//   caught: function() {
-//     Lifer.lives = Lifer.lives + 1;
-//     Lifer.draw();
-// });
+Q.Sprite.extend("Toast",{
+  init: function(p) { 
+  },
+  caught: function() {
+    Lifer.lives = Lifer.lives + 1;
+    Lifer.draw();
+});
 
-// Q.Sprite.extend("FrootLoop",{
-//   init: function(p) {
-//     this._super(p, { sheet: 'doubleoat', vx: 0 });
-//      this.add('2d');
-//   },
-//   caught: function() {
-//     Pointer.points = Pointer.points + 10;
-//     Pointer.draw();
-// });
+Q.Sprite.extend("FrootLoop",{
+  init: function(p) {
+    this._super(p, { sheet: 'doubleoat', vx: 0 });
+     this.add('2d');
+  },
+  caught: function() {
+    Pointer.points = Pointer.points + 10;
+    Pointer.draw();
+});
 
 
 Q.scene("level1",function(stage) {
