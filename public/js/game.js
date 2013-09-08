@@ -5,10 +5,9 @@ var Q = Quintus()
 
 Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
   init: function(p) { //initializes function
-    this._super(p, { sheet: "player", x: 410, y: 90 }); //says where the player starts and calls sprite's constuctor function. this._super is to override Q.Sprite functions
+    this._super(p, { sheet: "player", x: 410, y: 510, gravity: 0 }); //says where the player starts and calls sprite's constuctor function. this._super is to override Q.Sprite functions
     this.add('2d, platformerControls');
-    this.p.gravity = 0
-    
+            
     this.on("hit.sprite",function(collision) {
       if(collision.obj.isA("Tower")) { //if the object the player collides into is a tower
         Q.stageScene("endGame",1, { label: "You Won!" }); // the game will end with a dialog box saying you won
@@ -49,9 +48,9 @@ Q.scene("level1",function(stage) {
   stage.collisionLayer(new Q.TileLayer({ dataAsset: 'level.json', sheet: 'tiles' }));
   var player = stage.insert(new Q.Player());
   
-  stage.add("viewport").follow(player);
+  // stage.add("viewport").follow(player);
   
-  stage.insert(new Q.Enemy({ x: 700, y: -300 }));
+  stage.insert(new Q.Enemy({ x: 200, y: -300 }));
   stage.insert(new Q.Enemy({ x: 800, y: -300 }));
   
 //  stage.insert(new Q.Tower({ x: 0, y: 0 }));
