@@ -38,7 +38,7 @@ Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
 
 Q.Sprite.extend("FallingObject",{
   init: function(p) {
-    this._super(p, {sheet: 'regularoat', vx: 0 });
+    this._super(p, {sheet: 'tiger', vx: 0 });
     this.add('2d');
     
     this.collided = false;
@@ -55,7 +55,7 @@ Q.Sprite.extend("FallingObject",{
 
 Q.FallingObject.extend("RegularOat",{
   init: function(p) {
-    this._super(p, { sheet: 'regularoat', vx: 0 }); //gets the sprite style sheet for the enemy 
+    this._super({ sheet: 'regularoat', vx: 0 }); //gets the sprite style sheet for the enemy 
   }, 
   caught: function() {
     Pointer.points = Pointer.points + 1;
