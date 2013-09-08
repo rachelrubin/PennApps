@@ -60,7 +60,7 @@ Q.Sprite.extend("FallingObject",{
 
 Q.FallingObject.extend("RegularOat",{
   init: function(p) {
-    this._super({ sheet: 'regularoat', vx: 0 }); //gets the sprite style sheet for the enemy 
+    this._super(p, { sheet: 'regularoat', vx: 0 }); //gets the sprite style sheet for the enemy 
   }, 
   caught: function() {
     Pointer.points = Pointer.points + 1;
@@ -70,7 +70,7 @@ Q.FallingObject.extend("RegularOat",{
 
 Q.FallingObject.extend("Tiger",{
    init: function(p) {
-    this._super({ sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy 
+    this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy 
   }, 
   caught: function() {
     Lifer.lives = Lifer.lives - 1;
@@ -90,7 +90,7 @@ Q.FallingObject.extend("FireBall",{
 
  Q.FallingObject.extend("PoisonOat",{
   init: function(p) {
-    this._super({ sheet: 'poisonoat', vx: 0 }); //gets the sprite style sheet for the enemy 
+    this._super(p, { sheet: 'poisonoat', vx: 0 }); //gets the sprite style sheet for the enemy 
   },
   caught: function() {
     Pointer.points = Pointer.points - 5;
@@ -100,7 +100,7 @@ Q.FallingObject.extend("FireBall",{
 
 Q.FallingObject.extend("DoubleOat",{
   init: function(p) {
-    this._super({ sheet: 'doubleoat', vx: 0 }); //gets the sprite style sheet for the enemy
+    this._super(p, { sheet: 'doubleoat', vx: 0 }); //gets the sprite style sheet for the enemy
     this.add('2d'); //aibounce makes them bounce off of walls
   },
   caught: function() {
@@ -111,7 +111,7 @@ Q.FallingObject.extend("DoubleOat",{
 
 Q.FallingObject.extend("Toast",{
   init: function(p) { 
-    this._super({ sheet: 'toast', vx: 0 }); //gets the sprite style sheet for the enemy
+    this._super(p, { sheet: 'toast', vx: 0 }); //gets the sprite style sheet for the enemy
     this.add('2d'); 
   },
   caught: function() {
@@ -122,7 +122,7 @@ Q.FallingObject.extend("Toast",{
 
 Q.FallingObject.extend("FrootLoop",{
   init: function(p) {
-    this._super({ sheet: 'doubleoat', vx: 0 });
+    this._super(p, { sheet: 'doubleoat', vx: 0 });
      this.add('2d');
   },
   caught: function() {
@@ -137,19 +137,14 @@ Q.scene("level1",function(stage) {
   var player = stage.insert(new Q.Player());
   
   // stage.add("viewport").follow(player);
-  
-  stage.insert(new Q.Tiger({ x: 410, y: -300 }));
-  stage.insert(new Q.Tiger({ x: 410, y: -500 }));
-  // stage.insert(new Q.Tiger({ x: 410, y: -800 }));
-  // stage.insert(new Q.Tiger({ x: 410, y: -1000 }));
-  // stage.insert(new Q.Tiger({ x: 410, y: -1200 }));
-  // stage.insert(new Q.Tiger({ x: 800, y: -300 }));
-  // stage.insert(new Q.FireBall({ x: 300, y: -300 }));
-  // stage.insert(new Q.PoisonOat({ x: 500, y: -300 }));
-  // stage.insert(new Q.DoubleOat({ x: 600, y: -300 }));
-  // stage.insert(new Q.Toast({ x: 700, y: -300 }));
-  
-//  stage.insert(new Q.Tower({ x: 0, y: 0 }));
+
+  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
 });
 
 Q.scene('endGame',function(stage) {
