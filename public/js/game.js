@@ -16,6 +16,11 @@ var Lifer = {
   draw: function() {
     console.log(this.lives);
     $("#lives").text(this.lives);
+    if (Lifer.lives < 1){
+        Q.stageScene('endGame', 1, {
+          label: "You're Dead!"
+        });
+    }
 
   }
 };
@@ -131,7 +136,11 @@ Q.scene("level1",function(stage) {
   
   // stage.add("viewport").follow(player);
   
-  stage.insert(new Q.RegularOat({ x: 410, y: -300 }));
+  stage.insert(new Q.Tiger({ x: 410, y: -300 }));
+  stage.insert(new Q.Tiger({ x: 410, y: -500 }));
+  stage.insert(new Q.Tiger({ x: 410, y: -800 }));
+  stage.insert(new Q.Tiger({ x: 410, y: -1000 }));
+  stage.insert(new Q.Tiger({ x: 410, y: -1200 }));
   stage.insert(new Q.Tiger({ x: 800, y: -300 }));
   
 //  stage.insert(new Q.Tower({ x: 0, y: 0 }));
