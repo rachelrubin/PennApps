@@ -90,6 +90,7 @@ Q.FallingObject.extend("FireBall",{
   caught: function() {
     Pointer.points = Pointer.points - 5;
     Pointer.draw();
+  }
 });
 
 Q.FallingObject.extend("DoubleOat",{
@@ -100,6 +101,7 @@ Q.FallingObject.extend("DoubleOat",{
   caught: function() {
     Pointer.points = Pointer.points + 5;
     Pointer.draw();
+  }
 });
 
 Q.Sprite.extend("Toast",{
@@ -108,6 +110,7 @@ Q.Sprite.extend("Toast",{
   caught: function() {
     Lifer.lives = Lifer.lives + 1;
     Lifer.draw();
+  }
 });
 
 Q.Sprite.extend("FrootLoop",{
@@ -118,6 +121,7 @@ Q.Sprite.extend("FrootLoop",{
   caught: function() {
     Pointer.points = Pointer.points + 10;
     Pointer.draw();
+  }
 });
 
 
