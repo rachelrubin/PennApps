@@ -167,10 +167,6 @@ Q.scene("level1",function(stage) {
 
   addTiger();
 
-  function getTimeout() {
-    return Math.floor(Math.random() * 5000);
-  }
-
   function addDoubleOat() {
     stage.insert(new Q.DoubleOat({ x: Math.floor(Math.random()*1500), y: -500 }));
 
@@ -179,10 +175,6 @@ Q.scene("level1",function(stage) {
 
   addDoubleOat();
 
-  function getTimeout() {
-    return Math.floor(Math.random() * 5000);
-  }
-
   function addFrootLoop() {
     stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1500), y: -500 }));
 
@@ -190,10 +182,6 @@ Q.scene("level1",function(stage) {
   }
 
   addFrootLoop();
-
-  function getTimeout() {
-    return Math.floor(Math.random() * 5000);
-  }
 
   function addPoisonOat() {
     stage.insert(new Q.PoisonOat({ x: Math.floor(Math.random()*1500), y: -500 }));
