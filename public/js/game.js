@@ -25,6 +25,11 @@ var Lifer = {
   }
 };
 
+var progressed = 0;
+Q.gameLoop(function(dt) {
+    progressed = progressed + dt;
+ });
+
 
 $(document).ready(function() {
   Pointer.draw();
