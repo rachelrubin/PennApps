@@ -7,6 +7,16 @@ var Pointer = {
   points: 0,
   draw: function () {
     console.log(this.points);
+    $( "#points" ).text(this.points);
+  }
+}
+
+var Lifer = {
+  lives: 5,
+  draw: function() {
+    console.log(this.lives);
+    $("#lives").text(this.lives);
+
   }
 }
 
@@ -24,11 +34,13 @@ Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
 Q.Sprite.extend("FallingObject",{
   init: function(p) {
     this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy
-    this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
+    this.add('2d');
     
+    this.collided = false;
 
     this.on("hit", function(collision) {
-      if(collision.obj.isA("Player")){
+      if(collision.obj.isA("Player") && this.collided == false){
+        this.collided = true;
         this.caught();
       }
       this.destroy();
@@ -45,6 +57,15 @@ Q.FallingObject.extend("RegularOat",{
     Pointer.draw();
   } 
 });
+
+Q.FallingObject.extend("Tiger",{
+   init: function(p) {
+    this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy 
+  }, 
+  caught: function() {
+    Pointer.lives = Pointer.lives - 1;
+    Pointer.draw();
+})
 // //Q.FallingObject.extend("FireBall",{
 //   init: function(p) {
 //     this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy 
@@ -89,7 +110,7 @@ Q.scene("level1",function(stage) {
   // stage.add("viewport").follow(player);
   
   stage.insert(new Q.RegularOat({ x: 410, y: -300 }));
-  //stage.insert(new Q.RegularOat({ x: 800, y: -300 }));
+  stage.insert(new Q.RegularOat({ x: 800, y: -300 }));
   
 //  stage.insert(new Q.Tower({ x: 0, y: 0 }));
 });
