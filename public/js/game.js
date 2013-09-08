@@ -95,45 +95,8 @@ Q.FallingObject.extend("FireBall",{
   caught: function() {
     Pointer.points = Pointer.points - 5;
     Pointer.draw();
-}}
- 
-// Q.FallingObject.extend("FireBall",{
-//   init: function(p) {
-//     this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy 
-//   }
-// });
-
-// Q.FallingObject.extend("PoisonOat",{
-//   init: function(p) {
-//     this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy 
-//   }
-// });
-
-// Q.FallingObject.extend("DoubleOat",{
-//   init: function(p) {
-//     this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy
-//     this.add('2d, aiBounce'); //aibounce makes them bounce off of walls
-    
-//     this.on("bump.bottom",function(collision) { //if the enemy is bumped from any of the directions left right bottom
-//       if(collision.obj.isA("Player")) { //and the bumper is a player
-//         Q.stageScene("endGame",1, { label: "You Died" }); //the game over dialog pops up
-//         collision.obj.destroy(); //the sprite is destroyed
-//       }
-//     });  
-//   }
-// });
-
-// Q.Sprite.extend("Toast",{
-//   init: function(p) { 
-//   }
-// });
-
-// Q.Sprite.extend("FrootLoop",{
-//   init: function(p) {
-//   }
-// });
-//  }
-//});
+  }
+});
 
 Q.FallingObject.extend("DoubleOat",{
   init: function(p) {
@@ -167,7 +130,6 @@ Q.FallingObject.extend("FrootLoop",{
     Pointer.draw();
   }
 });
->>>>>>> 0785bc2844b099f803a06522c12448f2f946a209
 
 
 Q.scene("level1",function(stage) {
@@ -178,14 +140,14 @@ Q.scene("level1",function(stage) {
   
   stage.insert(new Q.Tiger({ x: 410, y: -300 }));
   stage.insert(new Q.Tiger({ x: 410, y: -500 }));
-  stage.insert(new Q.Tiger({ x: 410, y: -800 }));
-  stage.insert(new Q.Tiger({ x: 410, y: -1000 }));
-  stage.insert(new Q.Tiger({ x: 410, y: -1200 }));
-  stage.insert(new Q.Tiger({ x: 800, y: -300 }));
-  stage.insert(new Q.FireBall({ x: 300, y: -300 }));
-  stage.insert(new Q.PoisonOat({ x: 500, y: -300 }));
-  stage.insert(new Q.DoubleOat({ x: 600, y: -300 }));
-  stage.insert(new Q.Toast({ x: 700, y: -300 }));
+  // stage.insert(new Q.Tiger({ x: 410, y: -800 }));
+  // stage.insert(new Q.Tiger({ x: 410, y: -1000 }));
+  // stage.insert(new Q.Tiger({ x: 410, y: -1200 }));
+  // stage.insert(new Q.Tiger({ x: 800, y: -300 }));
+  // stage.insert(new Q.FireBall({ x: 300, y: -300 }));
+  // stage.insert(new Q.PoisonOat({ x: 500, y: -300 }));
+  // stage.insert(new Q.DoubleOat({ x: 600, y: -300 }));
+  // stage.insert(new Q.Toast({ x: 700, y: -300 }));
   
 //  stage.insert(new Q.Tower({ x: 0, y: 0 }));
 });
