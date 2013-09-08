@@ -34,6 +34,8 @@ $(document).ready(function() {
   Lifer.draw();
 });
 
+var player;
+
 Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
   init: function(p) { //initializes function
     this._super(p, { sheet: "player", x: 410, y: 510, gravity: 0 , speed: 500}); //says where the player starts and calls sprite's constuctor function. this._super is to override Q.Sprite functions
@@ -43,7 +45,7 @@ Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
 
 Q.Sprite.extend("FallingObject",{
   init: function(p) {
-    this._super(p, {sheet: 'tiger', vx: 0 });
+    this._super(Q._defaults(p, {sheet: 'tiger', vx: 0 }));
     this.add('2d');
     
     this.collided = false;
@@ -60,7 +62,7 @@ Q.Sprite.extend("FallingObject",{
 
 Q.FallingObject.extend("RegularOat",{
   init: function(p) {
-    this._super(p, { sheet: 'regularoat', vx: 0 }); //gets the sprite style sheet for the enemy 
+    this._super(Q._defaults(p, { sheet: 'regularoat', vx: 0 })); //gets the sprite style sheet for the enemy 
   }, 
   caught: function() {
     Pointer.points = Pointer.points + 1;
@@ -70,7 +72,7 @@ Q.FallingObject.extend("RegularOat",{
 
 Q.FallingObject.extend("Tiger",{
    init: function(p) {
-    this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy 
+    this._super(Q._defaults(p, { sheet: 'tiger', vx: 0 })); //gets the sprite style sheet for the enemy 
   }, 
   caught: function() {
     Lifer.lives = Lifer.lives - 1;
@@ -80,7 +82,7 @@ Q.FallingObject.extend("Tiger",{
 
 Q.FallingObject.extend("FireBall",{
   init: function(p) {
-    this._super(p, { sheet: 'fireball', vx: 0 });
+    this._super(Q._defaults(p, { sheet: 'fireball', vx: 0 }));
    },
     caught: function() {
     Lifer.lives = Lifer.lives - 2;
@@ -90,7 +92,7 @@ Q.FallingObject.extend("FireBall",{
 
  Q.FallingObject.extend("PoisonOat",{
   init: function(p) {
-    this._super(p, { sheet: 'poisonoat', vx: 0 }); //gets the sprite style sheet for the enemy 
+    this._super(Q._defaults(p, { sheet: 'poisonoat', vx: 0 })); //gets the sprite style sheet for the enemy 
   },
   caught: function() {
     Pointer.points = Pointer.points - 5;
@@ -100,7 +102,7 @@ Q.FallingObject.extend("FireBall",{
 
 Q.FallingObject.extend("DoubleOat",{
   init: function(p) {
-    this._super(p, { sheet: 'doubleoat', vx: 0 }); //gets the sprite style sheet for the enemy
+    this._super(Q._defaults(p, { sheet: 'doubleoat', vx: 0 })); //gets the sprite style sheet for the enemy
     this.add('2d'); //aibounce makes them bounce off of walls
   },
   caught: function() {
@@ -111,7 +113,7 @@ Q.FallingObject.extend("DoubleOat",{
 
 Q.FallingObject.extend("Toast",{
   init: function(p) { 
-    this._super(p, { sheet: 'toast', vx: 0 }); //gets the sprite style sheet for the enemy
+    this._super(Q._defaults(p, { sheet: 'toast', vx: 0 })); //gets the sprite style sheet for the enemy
     this.add('2d'); 
   },
   caught: function() {
@@ -122,7 +124,7 @@ Q.FallingObject.extend("Toast",{
 
 Q.FallingObject.extend("FrootLoop",{
   init: function(p) {
-    this._super(p, { sheet: 'doubleoat', vx: 0 });
+    this._super(Q._defaults(p, { sheet: 'doubleoat', vx: 0 }));
      this.add('2d');
   },
   caught: function() {
@@ -134,17 +136,21 @@ Q.FallingObject.extend("FrootLoop",{
 
 Q.scene("level1",function(stage) {
   stage.collisionLayer(new Q.TileLayer({ dataAsset: 'level.json', sheet: 'tiles' }));
-  var player = stage.insert(new Q.Player());
+  player = stage.insert(new Q.Player());
+  Lifer.lives = 5;
+  Lifer.draw();
+  Pointer.points = 0;
+  Pointer.draw();
   
   // stage.add("viewport").follow(player);
 
-  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
-  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
-  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
-  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
-  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
-  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
-  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600)-800, y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.RegularOat({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.PoisonOat({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000)-1500);
+  setInterval(function(){stage.insert(new Q.DoubleOat({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.FireBall({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.Toast({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
 });
 
 Q.scene('endGame',function(stage) {
@@ -152,6 +158,8 @@ Q.scene('endGame',function(stage) {
     x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
   }));
   
+  player.destroy();
+
   var button = box.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
                                            label: "Play Again" }))         
   var label = box.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, 
