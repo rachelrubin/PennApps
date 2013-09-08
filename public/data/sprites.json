@@ -33,11 +33,11 @@
 		"frames":1},
 
 	"poisonoat":
-		{"sx":0,
-		"sy":54,
+		{"sx":273,
+		"sy":73,
 		"cols":1,
-		"tilew":30,
-		"tileh":30,
+		"tilew":73,
+		"tileh":72,
 		"frames":1},
 		
 	"doubleoat":

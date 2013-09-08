@@ -144,13 +144,13 @@ Q.scene("level1",function(stage) {
   
   // stage.add("viewport").follow(player);
 
-  setInterval(function(){stage.insert(new Q.RegularOat({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
-  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
-  setInterval(function(){stage.insert(new Q.PoisonOat({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000)-1500);
-  setInterval(function(){stage.insert(new Q.DoubleOat({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
-  setInterval(function(){stage.insert(new Q.FireBall({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
-  setInterval(function(){stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
-  setInterval(function(){stage.insert(new Q.Toast({ x: Math.floor(Math.random()*1000), y: -500 }));}, Math.floor(Math.random()*3000));
+  setInterval(function(){stage.insert(new Q.RegularOat({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
+  setInterval(function(){stage.insert(new Q.Tiger({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
+  setInterval(function(){stage.insert(new Q.PoisonOat({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
+  setInterval(function(){stage.insert(new Q.DoubleOat({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
+  setInterval(function(){stage.insert(new Q.FireBall({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
+  setInterval(function(){stage.insert(new Q.FrootLoop({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
+  setInterval(function(){stage.insert(new Q.Toast({ x: Math.floor(Math.random()*1600), y: -500 }));}, Math.floor(Math.random()*6000));
 });
 
 Q.scene('endGame',function(stage) {
