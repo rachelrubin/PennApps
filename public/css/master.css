@@ -1,3 +1,17 @@
 body {
 	background-image: url("../images/background.jpg");
 }
+
+#points {
+	font-family: 'Orbitron', sans-serif;
+	color: #ffeb12;
+	font-size: 5em;
+	text-align: right;
+}
+
+#lives {
+	font-family: "Orbitron", sans-serif;
+	color: #ffeb12;
+	font-size: 5em;
+	text-align: left;
+}

@@ -49,7 +49,7 @@ Q.Sprite.extend("Player",{ //extends the sprite class to mean Player
 
 Q.Sprite.extend("FallingObject",{
   init: function(p) {
-    this._super(Q._defaults(p, {sheet: 'tiger', vx: 0, gravity:0.025}));
+    this._super(Q._defaults(p, {sheet: 'tiger', vx: 0, gravity:0.025, collisionMask: 2}));
     this.add('2d');
     this.on("step", function() {
       if(this.p.y > 360) {
