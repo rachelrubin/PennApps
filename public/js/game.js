@@ -65,7 +65,7 @@ Q.FallingObject.extend("Tiger",{
   caught: function() {
     Pointer.lives = Pointer.lives - 1;
     Pointer.draw();
-})
+});
 // //Q.FallingObject.extend("FireBall",{
 //   init: function(p) {
 //     this._super(p, { sheet: 'tiger', vx: 0 }); //gets the sprite style sheet for the enemy 
